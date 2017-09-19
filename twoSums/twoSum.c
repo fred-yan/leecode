@@ -11,18 +11,19 @@ int* twoSum(int* nums, int numsSize, int target) {
 	int i, j;
 
 	int *res = NULL;
+	res = (int *)malloc(2*sizeof(int));
 	for (i = 0; i < numsSize; i++) {
 		for(j = i+1; j < numsSize; j++) {
 			if ((*(p + i) + *(p + j)) == target) {
-				goto lable;
+				*res = i;
+				*(res+1) = j;
+				return res;
 			}
 		}
 	}
 
-	lable:res = (int *)malloc(2*sizeof(int));
-	*res = i;
-	*(res+1) = j;
-	return res;
+    return NULL;
+
 }
 
 int main() {
@@ -36,8 +37,16 @@ int main() {
 
 	int *p;
 	p = twoSum(tests, size, 3);
-	for (i = 0; i < 2; i++) {
-		printf("%d ", *(p+i));
+
+    if (!p) {
+		for (i = 0; i < 2; i++) {
+			printf("%d ", *(p+i));
+		}
+    } else {
+		printf("p is NULL\n");
 	}
+
+    free(tests);
+    free(p);
 	return 0;
 }
