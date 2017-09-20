@@ -38,7 +38,7 @@ int main() {
 	int *p;
 	p = twoSum(tests, size, 3);
 
-    if (!p) {
+    if (p) {
 		for (i = 0; i < 2; i++) {
 			printf("%d ", *(p+i));
 		}
