@@ -2,13 +2,10 @@ package main
 
 import "fmt"
 
-func main() {
+func twoSum(nums []int, target int) []int {
 	var tMap map[int]int
 	tMap = make(map[int]int)
-
-	nums := [4]int{2, 7, 11, 15}
-	target := 9
-
+	arr := [2]int{-1, -1}
 	for i := 0; i < len(nums); i++ {
 		tMap[nums[i]] = i
 	}
@@ -17,11 +14,22 @@ func main() {
 		complement := target - nums[i]
 		value, ok := tMap[complement]
 		if ok && (value != i) {
-			fmt.Println(i, value)
+			arr[0] = i
+			arr[1] = value
 			break
-		} else {
-			fmt.Println("Error")
-		}
+		} 
+	}
+	return arr
+    
+}
+
+func main() {
+	var res [2]int
+	nums := [4]int{2, 7, 11, 15}
+	target := 9
+	res = twoSum(nums, target)
+	for i := 0; i < len(res); i++ {
+		fmt.Println(res[i])
 	}
 
 }
