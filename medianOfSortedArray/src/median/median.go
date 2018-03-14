@@ -25,7 +25,7 @@ func FindMedianSortedArrays(nums1 []int, nums2 []int) int {
 	iMin := 0
 	iMax := m
 	halfLen := (m + n + 1) / 2
-	for iMin < iMax {
+	for iMin <= iMax {
 		i := (iMin + iMax) / 2
 		// when halfLen is maintain,  i increase and then j decrease
 		j := halfLen - i
@@ -33,7 +33,7 @@ func FindMedianSortedArrays(nums1 []int, nums2 []int) int {
 		if i < iMax && nums2[j-1] > nums1[i] {
 			// when nums2[j-1] > nums1[i], j need to decrease and i need to increase
 			iMin = iMin + 1
-		} else if i > 0 && nums1[i-1] > nums2[j] {
+		} else if i > iMin && nums1[i-1] > nums2[j] {
 			// when nums1[i-1] > nums2[j], i need to decrease and j need to increase
 			iMax = iMax - 1
 		} else {
